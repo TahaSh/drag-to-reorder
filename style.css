@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  height: 100%;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  background: #87a5b2;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  width: 100%;
+  gap: 10px 0;
+}
+
+.list__item {
+  width: 100%;
+  background: white;
+  padding: 15px;
+  border-radius: 5px;
+  color: #001d29;
+  font-weight: 500;
+  font-size: 18px;
+  box-shadow: 0 4px 6px -1px #001d2910, 0 2px 4px -2px #001d2910;
+  display: flex;
+  align-items: center;
+  position: relative;
+  will-change: transform;
+}
+
+.drag-handle {
+  position: absolute;
+  right: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.drag-handle::after {
+  content: '⠿';
+  font-size: 25px;
+  color: #00000099;
+}
+
+.list__item.is-idle .drag-handle {
+  cursor: grab;
+}
+
+.list__item.is-idle {
+  transition: 0.25s ease transform;
+}
+
+.list__item.is-draggable,
+.list__item.is-draggable .drag-handle {
+  cursor: grabbing;
+}
+
+.list__item.is-draggable {
+  z-index: 10;
+}
